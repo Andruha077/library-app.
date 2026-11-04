@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книга — BookSpace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <script src="js/book.js" defer></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container nav-content">
+        <a href="index.html" class="logo">Book<span>Space</span></a>
+
+        <nav>
+            <a href="index.html">Каталог</a>
+            <a href="index.html#about">Про нас</a>
+        </nav>
+    </div>
+</header>
+
+<main class="book-page">
+    <div class="container">
+
+        <a href="index.html" class="back-link">← Повернутися до каталогу</a>
+
+        <section class="book-details" id="bookDetails">
+            <div class="loading">Завантажуємо інформацію про книгу...</div>
+        </section>
+
+        <section class="comments-section">
+            <div class="section-heading">
+                <span class="eyebrow">СПІЛЬНОТА</span>
+                <h2>Відгуки читачів</h2>
+                <p>Поділися своїми враженнями про книгу.</p>
+            </div>
+
+            <form id="commentForm" class="comment-form">
+                <input
+                        type="text"
+                        id="commentAuthor"
+                        placeholder="Твоє ім'я"
+                        maxlength="100"
+                        required
+                >
+
+                <textarea
+                        id="commentText"
+                        placeholder="Напиши свій відгук..."
+                        maxlength="2000"
+                        required
+                ></textarea>
+
+                <button type="submit" class="primary-button">
+                    Опублікувати відгук
+                </button>
+            </form>
+
+            <div id="commentsList">
+                <div class="loading">Завантажуємо відгуки...</div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <a href="index.html" class="logo">Book<span>Space</span></a>
+        <p>Твій простір для читання.</p>
+    </div>
+</footer>
+
+</body>
+</html>

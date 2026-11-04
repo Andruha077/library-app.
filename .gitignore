@@ -1,0 +1,11 @@
+﻿.idea/
+*.iml
+**/target/
+out/
+*.log
+*.mv.db
+*.trace.db
+*.lock.db
+*.temp.db
+.DS_Store
+Thumbs.db

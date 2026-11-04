@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0"
+         metadata-complete="true">
+
+    <display-name>BookSpace Library Application</display-name>
+
+    <!-- Application configuration -->
+    <listener>
+        <listener-class>com.example.web.config.ApplicationConfig</listener-class>
+    </listener>
+
+    <!-- Books list, search, pagination and creation -->
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.example.web.controller.BookServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/books</url-pattern>
+    </servlet-mapping>
+
+    <!-- Book details by ID -->
+    <servlet>
+        <servlet-name>BookByIdServlet</servlet-name>
+        <servlet-class>com.example.web.controller.BookByIdServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BookByIdServlet</servlet-name>
+        <url-pattern>/books/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Comments: GET, POST, DELETE -->
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>com.example.web.controller.CommentServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/comments/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

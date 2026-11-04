@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSpace — Онлайн-бібліотека</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span class="logo-icon">B</span>
+        <span>BookSpace</span>
+    </a>
+
+    <nav>
+        <a href="#catalog">Каталог</a>
+        <a href="#about">Про бібліотеку</a>
+    </nav>
+
+    <a href="#catalog" class="nav-button">Знайти книгу</a>
+</header>
+
+<main>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">ТВОЯ НАСТУПНА УЛЮБЛЕНА КНИГА</span>
+
+            <h1>
+                Світ історій.<br>
+                <span>Безмежні можливості.</span>
+            </h1>
+
+            <p>
+                Відкривай нові ідеї, знаходь натхнення
+                та обирай книги, до яких хочеться повертатися.
+            </p>
+
+            <a href="#catalog" class="primary-button">
+                Переглянути каталог <span>→</span>
+            </a>
+        </div>
+
+        <div class="hero-decoration">
+            <div class="book book-one">
+                <span>01</span>
+                <strong>THE ART<br>OF THINKING</strong>
+                <small>KNOWLEDGE · IDEAS</small>
+            </div>
+
+            <div class="book book-two">
+                <span>02</span>
+                <strong>BUILD<br>YOUR FUTURE</strong>
+                <small>GROWTH · MINDSET</small>
+            </div>
+
+            <div class="book book-three">
+                <span>03</span>
+                <strong>THE<br>CREATIVE<br>MIND</strong>
+                <small>DESIGN · LIFE</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog" id="catalog">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">ВІДКРИВАЙ НОВЕ</span>
+                <h2>Популярні книги</h2>
+                <p>Знайди історію, яка захопить саме тебе.</p>
+            </div>
+
+            <span class="book-count" id="bookCount">Завантаження...</span>
+        </div>
+
+        <div class="search-box">
+            <span>⌕</span>
+            <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Пошук за назвою або автором..."
+            >
+            <button id="searchButton">Шукати</button>
+        </div>
+
+        <div id="bookList" class="book-grid">
+            <div class="loading">Завантажуємо каталог...</div>
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+
+    </section>
+
+    <section class="about" id="about">
+        <span class="eyebrow">BOOKSPACE</span>
+        <h2>Читання відкриває більше.</h2>
+        <p>
+            Наша бібліотека допомагає знаходити знання,
+            обмінюватися думками та відкривати нові світи.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <div class="logo">
+        <span class="logo-icon">B</span>
+        <span>BookSpace</span>
+    </div>
+    <p>© 2026 BookSpace. Онлайн-бібліотека.</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
