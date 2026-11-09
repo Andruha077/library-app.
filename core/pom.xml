@@ -17,6 +17,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- Spring Context: @Service, @Component, DI -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
 
         <!-- JUnit 5 -->
         <dependency>
@@ -31,7 +36,6 @@
             <artifactId>archunit-junit5</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 </project>

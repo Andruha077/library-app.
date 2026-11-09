@@ -3,6 +3,7 @@ package com.example.persistence.repository;
 
 import com.example.core.model.Comment;
 import com.example.core.port.CommentRepositoryPort;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JdbcCommentRepository implements CommentRepositoryPort {
 
     private final DataSource dataSource;
