@@ -5,9 +5,11 @@ import com.example.core.model.Book;
 import com.example.core.pagination.Page;
 import com.example.core.pagination.PageRequest;
 import com.example.core.port.CatalogRepositoryPort;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class BookService {
 
     private final CatalogRepositoryPort catalogRepository;

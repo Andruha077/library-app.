@@ -5,6 +5,7 @@ import com.example.core.model.Book;
 import com.example.core.pagination.Page;
 import com.example.core.pagination.PageRequest;
 import com.example.core.port.CatalogRepositoryPort;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JdbcCatalogRepository implements CatalogRepositoryPort {
 
     private final DataSource dataSource;
@@ -123,8 +125,7 @@ public class JdbcCatalogRepository implements CatalogRepositoryPort {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
                      sql,
-                     java.sql.Statement.RETURN_GENERATED_KEYS
-             )) {
+                     java.sql.Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getAuthor());

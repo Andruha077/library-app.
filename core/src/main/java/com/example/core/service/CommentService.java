@@ -1,12 +1,15 @@
+
 package com.example.core.service;
 
 import com.example.core.model.Comment;
 import com.example.core.port.CommentRepositoryPort;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CommentService {
 
     private final CommentRepositoryPort commentRepository;
