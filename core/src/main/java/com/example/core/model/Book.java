@@ -1,3 +1,4 @@
+
 package com.example.core.model;
 
 public class Book {
@@ -6,15 +7,27 @@ public class Book {
     private String title;
     private String author;
     private String description;
+    private Integer year;
 
     public Book() {
     }
 
+    // Старий конструктор для сумісності з попередніми лабораторними
     public Book(Long id, String title, String author, String description) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
+    }
+
+    // Новий конструктор із роком видання
+    public Book(Long id, String title, String author,
+                String description, Integer year) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.year = year;
     }
 
     public Long getId() {
@@ -32,6 +45,11 @@ public class Book {
     public String getDescription() {
         return description;
     }
+
+    public Integer getYear() {
+        return year;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,5 +64,9 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 }
