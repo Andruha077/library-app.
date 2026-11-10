@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk" th:lang="${#locale.language}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${book.title}">Book details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f6f5f1;
+            color: #17231f;
+        }
+
+        .book {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            color: #254b3c;
+        }
+    </style>
+</head>
+
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main>
+    <article class="book">
+        <h1 th:text="${book.title}">Book title</h1>
+
+        <p>
+            <strong th:text="#{books.author}">Author:</strong>
+            <span th:text="${book.author}">Author name</span>
+        </p>
+
+        <p th:text="${book.description}">Book description</p>
+
+        <a th:href="@{/books}" th:text="#{form.cancel}">
+            Back to books
+        </a>
+    </article>
+</main>
+
+</body>
+</html>
