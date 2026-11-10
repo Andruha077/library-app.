@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="uk" th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{form.add}">Add book</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f6f5f1;
+            color: #17231f;
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button, a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+        }
+
+        button {
+            background: #254b3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: #b00020;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main>
+    <h1 th:text="#{form.add}">Add book</h1>
+
+    <p class="error"
+       th:if="${error}"
+       th:text="#{form.error} + ' ' + ${error}">
+    </p>
+
+    <form th:action="@{/books}"
+          th:object="${book}"
+          method="post">
+
+        <label for="title" th:text="#{form.title}">
+            Book title
+        </label>
+
+        <input type="text"
+               id="title"
+               th:field="*{title}"
+               required>
+
+        <label for="author" th:text="#{form.author}">
+            Author
+        </label>
+
+        <input type="text"
+               id="author"
+               th:field="*{author}"
+               required>
+
+        <label for="description" th:text="#{form.description}">
+            Description
+        </label>
+
+        <textarea id="description"
+                  th:field="*{description}"
+                  rows="5">
+        </textarea>
+
+        <button type="submit" th:text="#{form.submit}">
+            Save
+        </button>
+
+        <a th:href="@{/books}" th:text="#{form.cancel}">
+            Cancel
+        </a>
+
+    </form>
+</main>
+
+</body>
+</html>

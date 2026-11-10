@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="uk" th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{books.title}">Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f6f5f1;
+            color: #17231f;
+        }
+
+        .book {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        input, button, a {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        a, button {
+            color: #254b3c;
+        }
+    </style>
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main>
+    <h1 th:text="#{books.title}">Library</h1>
+
+    <form th:action="@{/books}" method="get">
+        <input type="text"
+               name="q"
+               th:value="${query}"
+               th:placeholder="#{books.search}">
+
+        <button type="submit" th:text="#{books.search.button}">
+            Search
+        </button>
+    </form>
+
+    <a th:href="@{/books/add}" th:text="#{books.add}">
+        Add book
+    </a>
+
+    <p th:if="${#lists.isEmpty(books)}"
+       th:text="#{books.empty}">
+        No books
+    </p>
+
+    <section th:unless="${#lists.isEmpty(books)}">
+        <article class="book" th:each="book : ${books}">
+            <h2 th:text="${book.title}">Book title</h2>
+
+            <p>
+                <strong th:text="#{books.author}">Author:</strong>
+                <span th:text="${book.author}">Author name</span>
+            </p>
+
+            <p th:text="${book.description}">
+                Book description
+            </p>
+
+            <a th:href="@{/books/{id}(id=${book.id})}"
+               th:text="#{books.details}">
+                Details
+            </a>
+        </article>
+    </section>
+
+    <p>
+        <span th:text="#{books.total}">Total books:</span>
+        <strong th:text="${totalElements}">0</strong>
+    </p>
+
+</main>
+
+</body>
+</html>
+

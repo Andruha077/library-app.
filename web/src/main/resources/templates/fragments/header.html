@@ -1,0 +1,24 @@
+
+<header xmlns:th="http://www.thymeleaf.org"
+        th:fragment="header"
+        style="display: flex; justify-content: space-between;
+               align-items: center; padding: 15px 0;
+               border-bottom: 1px solid #d6d6d0;">
+
+    <a th:href="@{/books}"
+       style="font-size: 22px; font-weight: bold;
+              text-decoration: none; color: #254b3c;">
+        BOOKSPACE
+    </a>
+
+    <nav>
+        <a th:href="@{/books}" th:text="#{nav.books}">
+            Books
+        </a>
+
+        <a th:href="@{/books/add}" th:text="#{nav.add}">
+            Add book
+        </a>
+    </nav>
+
+</header>
