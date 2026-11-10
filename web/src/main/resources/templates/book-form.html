@@ -91,6 +91,17 @@
                th:field="*{author}"
                required>
 
+        <label for="year">
+            Рік видання
+        </label>
+
+        <input type="number"
+               id="year"
+               th:field="*{year}"
+               min="1"
+               max="2100"
+               placeholder="Наприклад, 1998">
+
         <label for="description" th:text="#{form.description}">
             Description
         </label>

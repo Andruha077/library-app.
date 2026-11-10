@@ -1,9 +1,11 @@
+
 package com.example.web.controller;
 
 import com.example.core.model.Book;
 import com.example.core.pagination.Page;
 import com.example.core.pagination.PageRequest;
 import com.example.core.service.BookService;
+import com.example.web.service.MailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,14 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     private final BookService bookService;
+    private final MailService mailService;
 
-    public BookController(BookService bookService) {
+    public BookController(
+            BookService bookService,
+            MailService mailService
+    ) {
         this.bookService = bookService;
+        this.mailService = mailService;
     }
 
     @GetMapping
@@ -56,7 +63,12 @@ public class BookController {
     ) {
         try {
             bookService.saveBook(book);
+
+            // Формування HTML-листа через FreeMarker
+            mailService.sendNewBookEmail(book);
+
             return "redirect:/books";
+
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             return "book-form";
