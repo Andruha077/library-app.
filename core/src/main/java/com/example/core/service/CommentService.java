@@ -1,4 +1,3 @@
-
 package com.example.core.service;
 
 import com.example.core.model.Comment;
@@ -20,6 +19,14 @@ public class CommentService {
 
     public List<Comment> findCommentsByBookId(Long bookId) {
         return commentRepository.findByBookId(bookId);
+    }
+
+    public List<Comment> findCommentsByUserId(Long userId) {
+        if (userId == null || userId <= 0) {
+            throw new IllegalArgumentException("Invalid user ID");
+        }
+
+        return commentRepository.findByUserId(userId);
     }
 
     public Comment addComment(Comment comment) {

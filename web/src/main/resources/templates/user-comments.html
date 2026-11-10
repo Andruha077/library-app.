@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коментарі користувача</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f6f5f1;
+            color: #17231f;
+        }
+
+        .comment {
+            background: white;
+            padding: 20px;
+            margin: 16px 0;
+            border-radius: 10px;
+        }
+
+        .comment h2 {
+            margin-top: 0;
+        }
+
+        .date {
+            color: #777;
+            font-size: 14px;
+        }
+
+        a {
+            color: #254b3c;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>
+        Коментарі користувача №<span th:text="${userId}"></span>
+    </h1>
+
+    <p th:if="${#lists.isEmpty(comments)}">
+        Користувач ще не залишив коментарів.
+    </p>
+
+    <section th:each="comment : ${comments}" class="comment">
+        <h2 th:text="${comment.author}"></h2>
+
+        <p th:text="${comment.text}"></p>
+
+        <p>
+            Книга №<span th:text="${comment.bookId}"></span>
+        </p>
+
+        <p class="date" th:text="${comment.createdAt}"></p>
+    </section>
+
+    <a th:href="@{/}">На головну</a>
+</main>
+
+</body>
+</html>
