@@ -3,6 +3,7 @@ package com.example.web.controller;
 
 import com.example.core.model.Comment;
 import com.example.core.service.CommentService;
+import com.example.web.dto.CommentResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,16 +20,20 @@ public class CommentController {
     }
 
     @GetMapping("/book/{bookId}")
-    public List<Comment> getCommentsByBookId(
+    public List<CommentResponse> getCommentsByBookId(
             @PathVariable("bookId") Long bookId) {
 
-        return commentService.findCommentsByBookId(bookId);
+        return commentService.findCommentsByBookId(bookId)
+                .stream()
+                .map(CommentResponse::from)
+                .toList();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Comment createComment(@RequestBody Comment comment) {
-        return commentService.addComment(comment);
+    public CommentResponse createComment(@RequestBody Comment comment) {
+        Comment savedComment = commentService.addComment(comment);
+        return CommentResponse.from(savedComment);
     }
 
     @DeleteMapping("/{id}")
