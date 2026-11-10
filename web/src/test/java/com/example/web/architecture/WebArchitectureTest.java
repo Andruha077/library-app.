@@ -1,3 +1,4 @@
+
 package com.example.web.architecture;
 
 import com.tngtech.archunit.core.domain.JavaClasses;
@@ -28,7 +29,7 @@ class WebArchitectureTest {
 
         classes()
                 .that()
-                .haveSimpleNameEndingWith("Servlet")
+                .haveSimpleNameEndingWith("Controller")
                 .should()
                 .resideInAPackage("com.example.web.controller..")
                 .check(importedClasses);

@@ -1,37 +1,52 @@
+
 package com.example.web.exception;
 
 import com.example.web.dto.ErrorResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.io.IOException;
-
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private final ObjectMapper objectMapper;
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalArgument(
+            IllegalArgumentException exception,
+            HttpServletRequest request
+    ) {
+        String message = exception.getMessage();
 
-    public GlobalExceptionHandler(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
-
-    public void handle(
-            HttpServletResponse response,
-            int status,
-            String message,
-            String path
-    ) throws IOException {
+        HttpStatus status = "Book not found".equals(message)
+                || "Comment not found".equals(message)
+                ? HttpStatus.NOT_FOUND
+                : HttpStatus.BAD_REQUEST;
 
         ErrorResponse error = new ErrorResponse(
-                status,
-                "Error",
+                status.value(),
+                status.getReasonPhrase(),
                 message,
-                path
+                request.getRequestURI()
         );
 
-        response.setStatus(status);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+        return ResponseEntity.status(status).body(error);
+    }
 
-        objectMapper.writeValue(response.getWriter(), error);
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleGeneralException(
+            Exception exception,
+            HttpServletRequest request
+    ) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                "Internal server error",
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(error);
     }
 }
